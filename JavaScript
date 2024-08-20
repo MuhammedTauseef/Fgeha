@@ -1,0 +1,45 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize Chart.js
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+    const attendanceChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Present', 'Late', 'Absent', 'On Leave'],
+            datasets: [{
+                label: 'Attendance Summary',
+                data: [110, 5, 10, 15],
+                backgroundColor: ['#32CD32', '#FF6347', '#FF6347', '#FF8C00'],
+                borderColor: ['#32CD32', '#FF6347', '#FF6347', '#FF8C00'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: document.body.classList.contains('night-mode') ? '#f5f5f5' : '#333'
+                    }
+                }
+            }
+        }
+    });
+
+    // Night Mode Toggle
+    const nightModeToggle = document.getElementById('nightModeIcon');
+    nightModeToggle.addEventListener('click', function () {
+        document.body.classList.toggle('night-mode');
+        const isNightMode = document.body.classList.contains('night-mode');
+        nightModeToggle.classList.toggle('fa-moon', !isNightMode);
+        nightModeToggle.classList.toggle('fa-sun', isNightMode);
+        
+        // Update Chart.js color dynamically based on the night mode
+        attendanceChart.options.plugins.legend.labels.color = isNightMode ? '#f5f5f5' : '#333';
+        attendanceChart.update();
+    });
+});
