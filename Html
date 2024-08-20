@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="file-WKY4iBOLOTscvW7PYN4VYcOS" alt="FGEHF Logo">
+        </div>
+        <div class="logo">
+            <h1>Federal Government Employees Housing Authority</h1>
+        </div>
+        <div class="header-right">
+            <img src="file-myBhcYSsFW3NwDfZBnrmzkQs" alt="Ministry of Housing and Works Logo">
+        </div>
+        <div class="night-mode-toggle">
+            <i id="nightModeIcon" class="fas fa-moon"></i>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Employees</a></li>
+            <li><a href="#">Attendance</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section class="filters">
+            <h2>Filter Options</h2>
+            <div class="filter-group">
+                <label for="bpsFilter">Filter by BPS:</label>
+                <select id="bpsFilter" onchange="filterData()">
+                    <option value="all">All</option>
+                    <option value="1-16">BPS 1-16</option>
+                    <option value="17-19">BPS 17-19</option>
+                    <option value="20-21">BPS 20-21</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="statusFilter">Filter by Status:</label>
+                <select id="statusFilter" onchange="filterData()">
+                    <option value="all">All</option>
+                    <option value="present">Present</option>
+                    <option value="late">Late</option>
+                    <option value="absent">Absent</option>
+                    <option value="leave">Leave</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="dashboard-overview">
+            <h2>Attendance Overview</h2>
+            <div class="stats">
+                <div class="stat">
+                    <h3>Total Employees</h3>
+                    <p>120</p>
+                </div>
+                <div class="stat">
+                    <h3>Present Today</h3>
+                    <p>110</p>
+                </div>
+                <div class="stat">
+                    <h3>Late Today</h3>
+                    <p>5</p>
+                </div>
+                <div class="stat">
+                    <h3>Absent Today</h3>
+                    <p>10</p>
+                </div>
+            </div>
+            <canvas id="attendanceChart"></canvas>
+        </section>
+
+        <section class="employee-list">
+            <h2>Employee List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee Code</th>
+                        <th>Name</th>
+                        <th>BPS</th>
+                        <th>Designation</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Status</th>
+                        <th>Leave Option</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTable">
+                    <tr class="employee-row" data-bps="16" data-status="present">
+                        <td>001</td>
+                        <td>Ali</td>
+                        <td>16</td>
+                        <td>computer operater</td>
+                        <td>08:30 AM</td>
+                        <td>04:30 PM</td>
+                        <td class="status">
+                            <i class="fas fa-check-circle on-time"></i> On Time
+                        </td>
+                        <td><button class="leave-btn">Apply Leave</button></td>
+                    </tr>
+                    <tr class="employee-row" data-bps="18" data-status="late">
+                        <td>002</td>
+                        <td>waseem</td>
+                        <td>18</td>
+                        <td>Deputy Director</td>
+                        <td>08:45 AM</td>
+                        <td>04:30 PM</td>
+                        <td class="status">
+                            <i class="fas fa-times-circle late"></i> Late
+                        </td>
+                        <td><button class="leave-btn">Apply Leave</button></td>
+                    </tr>
+                    <tr class="employee-row" data-bps="19" data-status="absent">
+                        <td>003</td>
+                        <td>Moshin</td>
+                        <td>19</td>
+                        <td>Director</td>
+                        <td>--:--</td>
+                        <td>--:--</td>
+                        <td class="status">
+                            <i class="fas fa-times-circle absent"></i> Absent
+                        </td>
+                        <td><button class="leave-btn">Apply Leave</button></td>
+                    </tr>
+                    <tr class="employee-row" data-bps="20" data-status="leave">
+                        <td>004</td>
+                        <td>kashif</td>
+                        <td>20</td>
+                        <td>Director</td>
+                        <td>--:--</td>
+                        <td>--:--</td>
+                        <td class="status">
+                            <i class="fas fa-times-circle leave"></i> On Leave
+                        </td>
+                        <td><button class="leave-btn">Apply Leave</button></td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Federal Government Employees Housing Authority</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
