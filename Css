@@ -1,0 +1,208 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #F5F5F5;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.night-mode {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+header {
+    background: linear-gradient(90deg, #006400, #008000, #00A550);
+    background-size: 600% 600%;
+    animation: gradient-animation 8s ease infinite;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.header-left, .header-right {
+    width: 10%;
+}
+
+.header-left img, .header-right img {
+    width: 100%;
+    height: auto;
+}
+
+.night-mode-toggle {
+    cursor: pointer;
+    font-size: 1.5em;
+    color: white;
+}
+
+.night-mode-toggle i {
+    margin-left: 20px;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header .logo {
+    text-align: center;
+    flex: 1;
+}
+
+header .logo h1 {
+    margin: 0;
+}
+
+nav {
+    background-color: #1F3B4D;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: block;
+}
+
+main {
+    padding: 20px;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    margin-bottom: 10px;
+}
+
+.dashboard-overview {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.night-mode .dashboard-overview {
+    background-color: #444;
+    color: #f5f5f5;
+}
+
+.dashboard-overview h2 {
+    margin-top: 0;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.stat {
+    background-color: #008080;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 22%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.night-mode .stat {
+    background-color: #005050;
+    color: #f5f5f5;
+}
+
+.employee-list {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.night-mode .employee-list {
+    background-color: #444;
+    color: #f5f5f5;
+}
+
+.employee-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee-list th, .employee-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.night-mode .employee-list th, body.night-mode .employee-list td {
+    border-bottom: 1px solid #666;
+}
+
+.status .on-time {
+    color: #32CD32; /* Green color for on-time attendance */
+}
+
+.status .late {
+    color: #FF6347; /* Red color for late attendance */
+}
+
+.status .absent {
+    color: #FF6347; /* Red color for absent */
+}
+
+.status .leave {
+    color: #FF8C00; /* Orange color for leave */
+}
+
+.leave-btn {
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.leave-btn:hover {
+    background-color: #E07B00;
+}
+
+body.night-mode .leave-btn {
+    background-color: #CC7A00;
+    color: #f5f5f5;
+}
+
+footer {
+    background: linear-gradient(90deg, #006400, #008000, #00A550);
+    background-size: 600% 600%;
+    animation: gradient-animation 8s ease infinite;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.night-mode footer {
+    background: linear-gradient(90deg, #002800, #004000, #005A28);
+}
